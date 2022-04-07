@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../Lib/site-packages/')
+
 from flask import Flask, render_template, redirect, request, abort, flash
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
@@ -16,7 +19,7 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-    return render_template('smarty/Главная.html')
+    return render_template('Главная.html')
 
 
 if __name__ == '__main__':
