@@ -16,7 +16,7 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-    return render_template('Главная.html')
+    return render_template('smarty/Главная.html')
 
 
 if __name__ == '__main__':
