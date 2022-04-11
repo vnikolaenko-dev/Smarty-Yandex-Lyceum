@@ -1,0 +1,48 @@
+<title>Конструктор</title>
+{% extends 'base.html' %}
+
+{% block content %}
+<!--        <form method="POST" name="content">-->
+<!--              <input type="file"  placeholder="photo"  name="photo" multiple accept="image/*,image/jpeg"/>-->
+<!--          </form>-->
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h2 class="u-text u-text-1"><font size="30" face="Open Sans">Констркутор Мероприятий</font></h2>
+    <form action="/create" method="POST" enctype="multipart/form-data">
+        <input type="text" placeholder="Название события" id="name-3b9a" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+        <br>
+        <textarea placeholder="Описание события" rows="4" cols="50" id="message-3b9a" name="message" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required=""></textarea>
+        <br>
+        <input type="text" placeholder="Ссылка на событие" name="link" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+        <br>
+        <input type="date" placeholder="MM/DD/YYYY" id="date-a600" name="date" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+        <br>
+        <font size="5" face="Open Sans"><a> Обложка </a></font>
+        <input type="file" id="profile_pic" name="file"
+                      accept=".jpg, .jpeg, .png">
+        <br>
+        <font size="5" face="Open Sans"><a> Направление </a></font>
+        <select name="direction">
+          <option value="1"> Общеобразовательное </option>
+          <option value="2"> Математика </option>
+          <option value="3"> Русский </option>
+          <option value="4"> Информатика </option>
+          <option value="5"> Физика </option>
+          <option value="6"> Биология </option>
+          <option value="7"> Химия </option>
+          <option value="8"> МХК </option>
+        </select>
+        <br>
+        <font size="5" face="Open Sans"><a> Уровень </a></font>
+             <select name="level">
+              <option value="0"> Любой </option>
+              <option value="1"> Региональный </option>
+              <option value="2"> Всероссийский </option>
+              <option value="3"> Международный </option>
+     </select>
+        <br>
+        <br>
+        <button type="submit"> Создать </button>
+    </form>
+
+      </div>
+{% endblock %}

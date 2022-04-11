@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .nameblog {
+    margin-left: 50px; /* Отступ слева */
+   }
+
+   .blog {
+    margin-left: 50px; /* Отступ слева */
+    padding: 20; /* Поля вокруг текста */
+   }
+  </style>
+
+<div class="nameblog">
+    {% if own == "my" %}
+        <h1><font size="10" face="Open Sans"> События, созданные Вами </font></h1>
+    {% else %}
+        <h1><font size="10" face="Open Sans"> Все добавленные события </font></h1>
+    {% endif %}
+    
+    {% for post, own in posts.pairs %}
+    </div>
+<div class="blog">
+        <a href="/event/{{post[0].id}}">
+            <h2><font size="5" face="Open Sans">{{ post[0].name }}
+                {% if post[1] and not(own) %}
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/delevent/{{post[0].id}}" style="padding: 10px 20px;">Добавлено</a>
+            </li></ul>
+                {% elif not(own) %}
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/addevent/{{post[0].id}}" style="padding: 10px 20px;">Добавить</a>
+            </li></ul>
+                {% else %}
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/delmyevent/{{post[0].id}}" style="padding: 10px 20px;">Удалить</a>
+            </li></ul>
+                {% endif %}
+            </font></h2>
+        </a>
+        <span class="badge badge-primary">{{ post[0].description }}</span>
+        <hr>
+    </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <style type="text/css">
+   A {
+    color: white; /* Цвет ссылок */
+   }
+
+   A:active {
+    color: white; /* Цвет активных ссылок */
+   }
+  </style>
+
+<div class="month">
+  <link rel="stylesheet" href="/static/Календарь.css">
+  <ul>
+    {% set prev = m - 1 %}
+    <li class="prev"><a href="/calendar/{{prev}}">&#10094;</a></li>
+    {% set next = m + 1 %}
+    <li class="next"><a href="/calendar/{{next}}">&#10095;</a></li>
+    <li><span style="font-size:25px">{{month}}<br></span><span style="font-size:25px">{{year}}</span></li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <li>Пн</li>
+  <li>Вт</li>
+  <li>Ср</li>
+  <li>Чт</li>
+  <li>Пт</li>
+  <li>Сб</li>
+  <li>Вс</li>
+</ul>
+
+<ul class="days">
+  {% for i in days %}
+    {% if i[1] == False %}
+  <li>{{i[0]}}</li>
+    {% else %}
+  <li><span class="active"><a href="/event/{{i[2]}}">{{i[0]}}</a></span></li>
+  {% endif %}
+  {% endfor %}
+</ul>
+{% endblock %}
