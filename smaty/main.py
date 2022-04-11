@@ -5,7 +5,7 @@ from datetime import datetime, date, time
 from flask import Flask, flash, render_template, request, redirect, make_response, session
 from flask_login import LoginManager
 
-from smaty.data.mod import db_session
+from data.mod import db_session
 from data.mod.users import User
 from data.mod.posts import Post
 from data.mod.user_event import UE
