@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .nameblog {
+    margin-left: 50px; /* Отступ слева */
+   }
+
+   .dir {
+    margin-left: 50px; /* Отступ слева */
+    margin-top: 20px; /* Поля вокруг текста */
+   }
+
+   .blog {
+    margin-left: 50px; /* Отступ слева */
+    padding: 20; /* Поля вокруг текста */
+   }
+  </style>
+
+<div class="nameblog">
+    {% if owner %}
+        <h1><font size="10" face="Open Sans"> Ваши Мероприятия </font></h1>
+    {% else %}
+        <h1><font size="10" face="Open Sans"> Лента Мероприятий </font></h1>
+    {% endif %}
+<form action="/events" method="POST">
+    <div class="dir">
+     <select name="direction">
+              <option value="0"> Направление </option>
+              <option value="0"> Все </option>
+              <option value="1"> Общеобразовательное </option>
+              <option value="2"> Математика </option>
+              <option value="3"> Русский </option>
+              <option value="4"> Информатика </option>
+              <option value="5"> Физика </option>
+              <option value="6"> Биология </option>
+              <option value="7"> Химия </option>
+              <option value="8"> МХК </option>
+     </select>
+     <select name="level">
+              <option value="0"> Уровень </option>
+              <option value="0"> Любой </option>
+              <option value="1"> Региональный </option>
+              <option value="2"> Всероссийский </option>
+              <option value="3"> Международный </option>
+     </select>
+        <button type="submit"> Поиск </button>
+</div></form>
+    {% for post in posts %}
+</div>
+<!--  <div class="search">-->
+<!--      <form action="" method="get">-->
+<!--          <input name="s" placeholder="Искать здесь..." type="search">-->
+<!--          <button type="submit">Поиск</button>-->
+<!--    </form>-->
+<!--  </div>-->
+
+<div class="blog">
+        <a href="/event/{{post[0].id}}">
+            <h2><font size="5" face="Open Sans">{{ post[0].name }}
+                {% if post[1] and not(owner) %}
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/delevent/{{post[0].id}}" style="padding: 10px 20px;">Добавлено</a>
+            </li></ul>
+                {% elif not(owner) %}
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/addevent/{{post[0].id}}" style="padding: 10px 20px;">Добавить</a>
+            </li></ul>
+                {% else %}
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/delmyevent/{{post[0].id}}" style="padding: 10px 20px;">Удалить</a>
+            </li></ul>
+                {% endif %}
+            </font></h2>
+        </a>
+        <span class="badge badge-primary">{{ post[0].description }}</span>
+        <hr>
+    </div>
+    {% endfor %}
+{% endblock %}

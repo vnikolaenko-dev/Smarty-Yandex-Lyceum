@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--        <form method="POST" name="content">-->
+<!--              <input type="file"  placeholder="photo"  name="photo" multiple accept="image/*,image/jpeg"/>-->
+<!--          </form>-->
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h2 class="u-text u-text-1"><font size="30" face="Open Sans">Констркутор Мероприятий</font></h2>
+    <form action="/create" method="POST" enctype="multipart/form-data">
+        <input type="text" placeholder="Имя события" id="name-3b9a" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+        <textarea placeholder="Описание события" rows="4" cols="50" id="message-3b9a" name="message" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required=""></textarea>
+        <input type="date" placeholder="MM/DD/YYYY" id="date-a600" name="date" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+        <button type="submit">Создать</button>
+    </form>
+
+      </div>
+{% endblock %}

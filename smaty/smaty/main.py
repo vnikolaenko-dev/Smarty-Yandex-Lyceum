@@ -549,4 +549,8 @@ def del_my_event(event_id):
 if __name__ == '__main__':
     # app.run(port=5000, host='127.0.0.1')
     port = int(os.environ.get("PORT", 5000))
+
+    from data.mod import db_session, users_api
+    db_session.global_init("data/db/smarty.db")
+    app.register_blueprint(users_api.blueprint)
     app.run(host='0.0.0.0', port=port)
